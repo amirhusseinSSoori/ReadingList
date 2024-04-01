@@ -1,3 +1,3 @@
-module ReadingList
+module readingList
 
 go 1.22.0
