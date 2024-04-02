@@ -48,14 +48,11 @@ func (app *application) getBook(w http.ResponseWriter, r *http.Request) {
 		Rating:    4.5,
 		Verstion:  1,
 	}
-	js, err := json.Marshal(book)
-	if err != nil {
+
+	if err := app.writrJSON(w, http.StatusOK, book); err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
-	js = append(js, '\n')
-	w.Header().Set("Content-type", "application/json")
-	w.Write(js)
 }
 
 func (app *application) getCreateBooksHandler(w http.ResponseWriter, r *http.Request) {
@@ -79,16 +76,13 @@ func (app *application) getCreateBooksHandler(w http.ResponseWriter, r *http.Req
 				Geners:    []string{"Fiction", "Adventure"},
 				Rating:    4.9,
 				Verstion:  1,
-			}}
-		js, err := json.Marshal(books)
-		if err != nil {
+			},
+		}
+
+		if err := app.writrJSON(w, http.StatusOK, books); err != nil {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
 		}
-		js = append(js, '\n')
-		w.Header().Set("Content-type", "application/json")
-		w.Write(js)
-
 	}
 
 	if r.Method == http.MethodPost {
