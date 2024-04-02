@@ -43,8 +43,6 @@ func main() {
 		WriteTimeout: 10 * time.Second,
 	}
 
-	//create route
-
 	logger.Printf("starting  %s server on %s", cfg.env, addr)
 
 	err := srv.ListenAndServe()
