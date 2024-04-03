@@ -49,7 +49,7 @@ func (app *application) getBook(w http.ResponseWriter, r *http.Request) {
 		Verstion:  1,
 	}
 
-	if err := app.writrJSON(w, http.StatusOK, book); err != nil {
+	if err := app.writrJSON(w, http.StatusOK, envelope{"book": book}); err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
@@ -79,7 +79,7 @@ func (app *application) getCreateBooksHandler(w http.ResponseWriter, r *http.Req
 			},
 		}
 
-		if err := app.writrJSON(w, http.StatusOK, books); err != nil {
+		if err := app.writrJSON(w, http.StatusOK, envelope{"books": books}); err != nil {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
 		}
