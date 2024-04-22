@@ -44,9 +44,9 @@ func (app *application) getBook(w http.ResponseWriter, r *http.Request) {
 		Title:     "Echoes in the darkness",
 		Published: 2019,
 		Pages:     300,
-		Geners:    []string{"Fiction", "Thriller"},
+		Genres:    []string{"Fiction", "Thriller"},
 		Rating:    4.5,
-		Verstion:  1,
+		Version:   1,
 	}
 
 	if err := app.writrJSON(w, http.StatusOK, envelope{"book": book}); err != nil {
@@ -113,7 +113,7 @@ func (app *application) updateBook(w http.ResponseWriter, r *http.Request) {
 		Title     *string  `json:"title"`
 		Published *int     `json:"published"`
 		Pages     *int     `json:"pages"`
-		Geners    []string `json:"geners"`
+		Genres    []string `json:"geners"`
 		Rating    *float32 `json:"rating"`
 	}
 
@@ -123,9 +123,9 @@ func (app *application) updateBook(w http.ResponseWriter, r *http.Request) {
 		Title:     "Echoes in the darkness",
 		Published: 2019,
 		Pages:     300,
-		Geners:    []string{"Fiction", "Thriller"},
+		Genres:    []string{"Fiction", "Thriller"},
 		Rating:    4.5,
-		Verstion:  1,
+		Version:   1,
 	}
 
 	/** body, err := ioutil.ReadAll(r.Body)
@@ -155,8 +155,8 @@ func (app *application) updateBook(w http.ResponseWriter, r *http.Request) {
 		book.Pages = *input.Pages
 	}
 
-	if len(input.Geners) > 0 {
-		book.Geners = input.Geners
+	if len(input.Genres) > 0 {
+		book.Genres = input.Genres
 	}
 
 	if input.Rating != nil {
