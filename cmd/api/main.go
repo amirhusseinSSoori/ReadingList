@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"readingList/internal/data"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -22,6 +23,7 @@ type config struct {
 type application struct {
 	config config
 	logger *log.Logger
+	models data.Models
 }
 
 func main() {

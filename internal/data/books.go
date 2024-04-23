@@ -29,7 +29,7 @@ func (b BookModel) Insert(book *Book) error {
 		VALUES ($1, $2, $3, $4 ,$5)
 		RETURNING id, created_at, version`
 
-	args := []interface{}{book.Title, book.Published, book.Pages, pq.Array(book.Genres), book.Rating}
+	args := []any{book.Title, book.Published, book.Pages, pq.Array(book.Genres), book.Rating}
 	// return the auto generated system values to Go object
 	return b.DB.QueryRow(query, args...).Scan(&book.ID, &book.CreatedAt, &book.Version)
 }
